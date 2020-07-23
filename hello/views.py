@@ -15,7 +15,6 @@ def homepage(request):
                   template_name='main/home.html',
                   context = {"tutorials":Tutorial.objects.all})
 
-
 def db(request):
     greeting = Greeting()
     greeting.save()

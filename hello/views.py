@@ -40,4 +40,4 @@ def register(request):
 
 def allbuilding(request):
     # return HttpResponse('Hello from Python!')
-    return render(request, "main/allbuilding.html")
+    return render(request, "building/allbuilding.html")

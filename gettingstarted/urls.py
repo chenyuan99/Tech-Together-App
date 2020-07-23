@@ -25,4 +25,5 @@ urlpatterns = [
     path("register/", hello.views.register, name="register"),
     path("logout", hello.views.logout_request, name="logout"),
     path("login", hello.views.login_request, name="login"),
+    path("allbuilding", hello.views.allbuilding, name="allbuilding")
 ]

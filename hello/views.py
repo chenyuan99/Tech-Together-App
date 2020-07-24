@@ -2,8 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from hello.forms import NewUserForm
-from hello.models import Greeting
-from hello.models import Tutorial
+from hello.models import Greeting, Tutorial
 
 # Create your views here.
 def index(request):
@@ -37,9 +36,35 @@ def register(request):
     return render(request = request,
                   template_name = "main/register.html",
                   context={"form":form})
+    # if request.method == "POST":
+    #     form = UserCreationForm(request.POST)
+    #     if form.is_valid():
+    #         user = form.save()
+    #         username = form.cleaned_data.get('username')
+    #         login(request, user)
+    #         return redirect("main:homepage")
+
+    #     else:
+    #         for msg in form.error_messages:
+    #             print(form.error_messages[msg])
+
+    #         return render(request = request,
+    #                       template_name = "main/register.html",
+    #                       context={"form":form})
+
+    form = UserCreationForm
+    return render(request = request,
+                  template_name = "main/register.html",
+                  context={"form":form})
 
 def allbuilding(request):
-    return render(request, "building/allbuilding.html")
+    return render(request, "building/all-building.html")
 
 def newmanlibrary(request):
     return render(request, "building/newman-library.html")
+
+def togressonhall(request):
+    return render(request, "building/togresson-hall.html")
+
+def mcbrydehall(request):
+    return render(request, "building/mcbryde-hall.html")

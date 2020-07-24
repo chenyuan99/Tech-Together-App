@@ -39,5 +39,7 @@ def register(request):
                   context={"form":form})
 
 def allbuilding(request):
-    # return HttpResponse('Hello from Python!')
     return render(request, "building/allbuilding.html")
+
+def newmanlibrary(request):
+    return render(request, "building/newman-library.html")

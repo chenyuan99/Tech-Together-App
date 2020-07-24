@@ -1,7 +1,7 @@
 from django.urls import path, include
-
+from django.views.generic.base import RedirectView
 from django.contrib import admin
-
+from django.urls import include, re_path
 
 admin.autodiscover()
 
@@ -16,7 +16,7 @@ import hello.views
 # Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
 
 app_name = 'main'  # here for namespacing of urls.
-
+favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 urlpatterns = [
     # path("", include('gettingstarted.urls')),
     path("", hello.views.index, name="index"),
@@ -26,5 +26,6 @@ urlpatterns = [
     path("logout", hello.views.logout_request, name="logout"),
     path("login", hello.views.login_request, name="login"),
     path("allbuilding", hello.views.allbuilding, name="allbuilding"),
-    path("newman-library", hello.views.newmanlibrary, name="newman-library")
+    path("newman-library", hello.views.newmanlibrary, name="newman-library"),
+    re_path(r'^favicon\.ico$', favicon_view)
 ]

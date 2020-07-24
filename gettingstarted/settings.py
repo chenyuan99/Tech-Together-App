@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 
 import os
 import django_heroku
+import dj_database_url
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -77,9 +78,13 @@ WSGI_APPLICATION = "gettingstarted.wsgi.application"
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE" : "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3")
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd84lh2q5k0gvqb',
+        'USER': 'qnchsiwgwibdox',
+        'PASSWORD': 'b92d37953ee04fc1349b73f7658afedfbd5fb6c9d2e31744c71179a8d5763be1',
+        'HOST': 'ec2-34-192-173-173.compute-1.amazonaws.com',
+        'PORT': '5432',
     }
 }
 

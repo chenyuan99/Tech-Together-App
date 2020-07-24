@@ -9,6 +9,9 @@ def index(request):
     # return HttpResponse('Hello from Python!')
     return render(request, "index.html")
 
+def about(request):
+    return render(request, "main/about.html")
+
 def homepage(request):
     return render(request = request,
                   template_name='main/home.html',

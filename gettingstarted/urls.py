@@ -29,5 +29,6 @@ urlpatterns = [
     path("newman-library", hello.views.newmanlibrary, name="newman-library"),
     path("togresson-hall", hello.views.togressonhall, name="togresson-hall"),
     path("mcbryde-hall", hello.views.mcbrydehall, name="mcbryde-hall"),
-    re_path(r'^favicon\.ico$', favicon_view)
+    re_path(r'^favicon\.ico$', favicon_view),
+    path("about", hello.views.about, name="about"),
 ]

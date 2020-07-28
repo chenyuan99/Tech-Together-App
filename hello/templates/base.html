@@ -82,7 +82,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">MaroonPower</a>
+        <a class="navbar-brand" href="https://www.maroonpower.com">MaroonPower</a>
       </div>
 
 
@@ -98,9 +98,13 @@
           <li>
             <a href="/login"><span class="glyphicon glyphicon-user"></span> Visitor</a>
           </li>
-          <li>
-            <a href="/register"><span class="glyphicon glyphicon-plus"></span> Register</a>
-          </li>
+          {% if user.is_authenticated %}
+          <li><a href="/account">{{user.username|title}}</a></li>
+          <li><a href="/logout">Logout</a></li>
+          {% else %}
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Register</a></li>
+          {% endif %}
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span
                 class="glyphicon glyphicon-th"></span> Buildings<span class="caret"></span></a>

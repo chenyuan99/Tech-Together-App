@@ -90,3 +90,6 @@ def mcbrydehall(request):
 
 def faq(request):
     return render(request, "main/faq.html")
+
+def privacy(request):
+    return render(request, "main/privacy-policy.html")

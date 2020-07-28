@@ -32,4 +32,5 @@ urlpatterns = [
     re_path(r'^favicon\.ico$', favicon_view),
     path("about", hello.views.about, name="about"),
     path("faq", hello.views.faq, name="faq"),
+    path("privacy-policy", hello.views.privacy, name="privacy-policy"),
 ]

@@ -4,7 +4,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from hello.forms import NewUserForm
 from hello.models import Greeting, Tutorial, TutorialCategory
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 import logging
 
 # This retrieves a Python logging instance (or creates it)
@@ -32,7 +32,7 @@ def db(request):
 def logout_request(request):
     logout(request)
     messages.info(request, "Logged out successfully!")
-    return redirect("index.html")
+    return redirect("index")
 
 def login_request(request):
     if request.method == 'POST':
@@ -61,7 +61,7 @@ def register(request):
             user = form.save()
             username = form.cleaned_data.get('username')
             login(request, user)
-            return redirect("main:homepage")
+            return redirect("index")
 
         else:
             for msg in form.error_messages:

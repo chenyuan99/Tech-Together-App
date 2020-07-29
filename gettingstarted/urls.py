@@ -6,19 +6,17 @@ from django.urls import include, re_path
 admin.autodiscover()
 
 import hello.views
-
-# To add a new path, first import the app:
-# import blog
-#
-# Then add the new path:
-# path('blog/', blog.urls, name="blog")
-#
-# Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
+import sign.views
+# Author: Yuan Chen
+# Version: 2020.07.29
 
 app_name = 'main'  # here for namespacing of urls.
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 urlpatterns = [
-    # path("", include('gettingstarted.urls')),
+
+    #admin
+    path('admin/', admin.site.urls),
+    # path("", include('guest3.urls')),
     path("", hello.views.index, name="index"),
     path("db/", hello.views.db, name="db"),
     path("admin/", admin.site.urls),
@@ -33,4 +31,24 @@ urlpatterns = [
     path("about", hello.views.about, name="about"),
     path("faq", hello.views.faq, name="faq"),
     path("privacy-policy", hello.views.privacy, name="privacy-policy"),
+    
+
+    # api
+    path('api/', include('api.urls')),
+    path('guest/', include('guest3.urls')),
+    # sign
+    path('index/', sign.views.index),
+    # path('', sign.views.index),
+    path('accounts/login/',  sign.views.index),
+    path('login_action/',  sign.views.login_action),
+    path('event_manage/',  sign.views.event_manage),
+    path('add_event/',  sign.views.add_event),
+    path('guest_manage/',  sign.views.guest_manage),
+    path('add_guest/',  sign.views.add_guest),
+    path('search_name/',  sign.views.search_name),
+    path('search_phone/',  sign.views.search_phone),
+    path('sign_index/<int:event_id>/',  sign.views.sign_index),
+    #path('sign_index2/<int:event_id>/', views.sign_index2),
+    path('sign_index_action/<int:event_id>/',  sign.views.sign_index_action),
+    path('logout/',  sign.views.logout),
 ]

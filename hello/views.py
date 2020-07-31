@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from hello.forms import NewUserForm
-from hello.models import Greeting, Tutorial, TutorialCategory
+from hello.forms import NewUserForm,  AddEventForm, AddGuestForm
+from hello.models import Greeting, Tutorial, TutorialCategory, Event, Guest
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 import logging
@@ -93,3 +93,29 @@ def faq(request):
 
 def privacy(request):
     return render(request, "main/privacy-policy.html")
+
+def event(request):
+    # return render(request, "add-event.html")
+    username = request.session.get('user', '')
+
+    if request.method == 'POST':
+        form = AddEventForm(request.POST)  # form 包含提交的数据
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            address = form.cleaned_data['address']
+            limit = form.cleaned_data['limit']
+            start_time = form.cleaned_data['start_time']
+            status = form.cleaned_data['status']
+            if status is True:
+                status = 1
+            else:
+                status = 0
+
+            Event.objects.create(
+                name=name, limit=limit, address=address, status=status, start_time=start_time)
+            return render(request, "check-in.html", {"user": username, "form": form, "success": "Clock In Successfully!"})
+
+    else:
+        form = AddEventForm()
+
+    return render(request, "check-in.html", {"user": username, "form": form})

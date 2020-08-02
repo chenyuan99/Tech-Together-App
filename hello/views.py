@@ -119,3 +119,36 @@ def event(request):
         form = AddEventForm()
 
     return render(request, "check-in.html", {"user": username, "form": form})
+
+
+def add_guest(request):
+    username = request.session.get('user', '')
+    return render(request, "add-guest.html")
+    # if request.method == 'POST':
+    #     form = AddGuestForm(request.POST)
+
+    #     if form.is_valid():
+    #         event = form.cleaned_data['event']
+    #         realname = form.cleaned_data['realname']
+    #         phone = form.cleaned_data['phone']
+    #         email = form.cleaned_data['email']
+    #         sign = form.cleaned_data['sign']
+    #         if sign is True:
+    #             sign = 1
+    #         else:
+    #             sign = 0
+
+    #         Guest.objects.create(event=event, realname=realname,
+    #                              phone=phone, email=email, sign=sign)
+    #         return render(request, "add-guest.html", {"user": username, "form": form, "success": "Add Guest Successfully"})
+
+    # else:
+    #     form = AddGuestForm()
+
+    # return render(request, "add-guest.html", {"user": username, "form": form})
+
+
+def logout(request):
+    auth.logout(request)  # 退出登录
+    response = HttpResponseRedirect('/index/')
+    return response

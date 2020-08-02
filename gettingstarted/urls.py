@@ -34,4 +34,5 @@ urlpatterns = [
     path("faq", hello.views.faq, name="faq"),
     path("privacy-policy", hello.views.privacy, name="privacy-policy"),
     path("check-in", hello.views.event, name="check-in"),
+    path("add-guest", hello.views.add_guest, name="add-guest"),
 ]

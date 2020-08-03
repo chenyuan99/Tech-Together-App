@@ -35,4 +35,5 @@ urlpatterns = [
     path("check-in", hello.views.event, name="check-in"),
     path("check-out", hello.views.check_out, name="check-out"),
     path("add-guest", hello.views.add_guest, name="add-guest"),
+    path("account", hello.views.account, name="account"),
 ]

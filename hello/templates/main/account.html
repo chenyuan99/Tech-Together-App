@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="jumbotron text-center">
+    <div class="container">
+        <h1>Events</h1>
+        <p>{{user.username|title}}</p>
+    </div>
+</div>
+<div class="container ">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">Panel heading</div>
+
+        <!-- Table -->
+        <table class="table">
+            ...
+        </table>
+    </div>
+</div>
+{% endblock %}

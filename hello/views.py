@@ -148,3 +148,6 @@ def add_guest(request):
 
 def check_out(request):
     return render(request, "check-out.html")
+
+def account(request):
+    return render(request, "main/account.html")

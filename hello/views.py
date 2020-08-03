@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from hello.forms import NewUserForm,  AddEventForm, AddGuestForm
 from hello.models import Greeting, Tutorial, TutorialCategory, Event, Guest
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import logging
 
 # This retrieves a Python logging instance (or creates it)
@@ -12,16 +13,15 @@ logger = logging.getLogger(__name__)
 
 # Create your views here.
 def index(request):
-    # return HttpResponse('Hello from Python!')
     return render(request, "index.html")
 
 def about(request):
     return render(request, "main/about.html")
 
-def homepage(request):
-    return render(request = request,
-                  template_name='main/home.html',
-                  context = {"tutorials":Tutorial.objects.all})
+# def homepage(request):
+#     return render(request = request,
+#                   template_name='main/home.html',
+#                   context = {"tutorials":Tutorial.objects.all})
 
 def db(request):
     greeting = Greeting()
@@ -123,29 +123,28 @@ def event(request):
 
 def add_guest(request):
     username = request.session.get('user', '')
-    return render(request, "add-guest.html")
-    # if request.method == 'POST':
-    #     form = AddGuestForm(request.POST)
+    if request.method == 'POST':
+        form = AddGuestForm(request.POST)
 
-    #     if form.is_valid():
-    #         event = form.cleaned_data['event']
-    #         realname = form.cleaned_data['realname']
-    #         phone = form.cleaned_data['phone']
-    #         email = form.cleaned_data['email']
-    #         sign = form.cleaned_data['sign']
-    #         if sign is True:
-    #             sign = 1
-    #         else:
-    #             sign = 0
+        if form.is_valid():
+            event = form.cleaned_data['event']
+            realname = form.cleaned_data['realname']
+            phone = form.cleaned_data['phone']
+            email = form.cleaned_data['email']
+            sign = form.cleaned_data['sign']
+            if sign is True:
+                sign = 1
+            else:
+                sign = 0
 
-    #         Guest.objects.create(event=event, realname=realname,
-    #                              phone=phone, email=email, sign=sign)
-    #         return render(request, "add-guest.html", {"user": username, "form": form, "success": "Add Guest Successfully"})
+            Guest.objects.create(event=event, realname=realname,
+                                 phone=phone, email=email, sign=sign)
+            return render(request, "add-guest.html", {"user": username, "form": form, "success": "Add Guest Successfully"})
 
-    # else:
-    #     form = AddGuestForm()
+    else:
+        form = AddGuestForm()
 
-    # return render(request, "add-guest.html", {"user": username, "form": form})
+    return render(request, "add-guest.html", {"user": username, "form": form})
 
 
 def logout(request):

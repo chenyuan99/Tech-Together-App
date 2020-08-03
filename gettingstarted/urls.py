@@ -18,7 +18,6 @@ import hello.views
 app_name = 'main'  # here for namespacing of urls.
 favicon_view = RedirectView.as_view(url='/static/favicon.ico', permanent=True)
 urlpatterns = [
-    # path("", include('gettingstarted.urls')),
     path("", hello.views.index, name="index"),
     path("db/", hello.views.db, name="db"),
     path("admin/", admin.site.urls),

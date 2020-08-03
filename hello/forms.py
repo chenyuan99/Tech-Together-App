@@ -20,11 +20,11 @@ class NewUserForm(UserCreationForm):
 
 # add event form
 class AddEventForm(forms.Form):
-    name = forms.CharField(max_length=100)           
-    limit = forms.IntegerField()                      # 限制人数
-    status = forms.BooleanField(required=False)       # 状态
+    # name = forms.CharField(max_length=100)           
+    # limit = forms.IntegerField()                      # 限制人数
+    # status = forms.BooleanField(required=False)       # 状态
     address = forms.CharField(max_length=200)         # 地址
-    start_time = forms.DateTimeField()                # 发布会时间
+    # start_time = forms.DateTimeField()                # 发布会时间
 
 
 # add guest

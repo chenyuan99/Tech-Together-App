@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from hello.forms import NewUserForm,  AddEventForm, AddGuestForm
-from hello.models import Greeting, Tutorial, TutorialCategory, Event, Guest
+from hello.models import Greeting, Event, Guest
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -95,26 +95,14 @@ def privacy(request):
     return render(request, "main/privacy-policy.html")
 
 def event(request):
-    # return render(request, "add-event.html")
-    username = request.session.get('user', '')
-
+    username = request.user.get_username()
+    # print(username)
     if request.method == 'POST':
-        form = AddEventForm(request.POST)  # form 包含提交的数据
+        form = AddEventForm(request.POST)
         if form.is_valid():
-            name = form.cleaned_data['name']
             address = form.cleaned_data['address']
-            limit = form.cleaned_data['limit']
-            start_time = form.cleaned_data['start_time']
-            status = form.cleaned_data['status']
-            if status is True:
-                status = 1
-            else:
-                status = 0
-
-            Event.objects.create(
-                name=name, limit=limit, address=address, status=status, start_time=start_time)
+            Event.objects.create(address=address)
             return render(request, "check-in.html", {"user": username, "form": form, "success": "Clock In Successfully!"})
-
     else:
         form = AddEventForm()
 
@@ -132,10 +120,10 @@ def add_guest(request):
             phone = form.cleaned_data['phone']
             email = form.cleaned_data['email']
             sign = form.cleaned_data['sign']
-            if sign is True:
-                sign = 1
-            else:
-                sign = 0
+            # if sign is True:
+            #     sign = 1
+            # else:
+            #     sign = 0
 
             Guest.objects.create(event=event, realname=realname,
                                  phone=phone, email=email, sign=sign)
@@ -150,4 +138,6 @@ def check_out(request):
     return render(request, "check-out.html")
 
 def account(request):
+    # query_results = Event.objects.all()
+    # return render(request, "main/account.html",{'query_results':query_results})
     return render(request, "main/account.html")

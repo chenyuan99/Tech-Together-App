@@ -3,18 +3,49 @@
 {% block content %}
 <div class="jumbotron text-center">
     <div class="container">
-        <h1>Events</h1>
+        <h1>Account</h1>
         <p>{{user.username|title}}</p>
     </div>
 </div>
 <div class="container ">
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading">Panel heading</div>
+        <div class="panel-heading text-center"><h3>Saved Places</h3></div>
 
         <!-- Table -->
-        <table class="table">
-            ...
+        <table>
+            <tr>
+                <th>Field 1</th>
+                ...
+                <th>Field N</th>
+            </tr>
+            {% for item in query_results %}
+            <tr> 
+                <td>{{ item.field1 }}</td>
+                ...
+                <td>{{ item.fieldN }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading text-center"><h3>Your History</h3></div>
+
+        <!-- Table -->
+        <table>
+            <tr>
+                <th>Field 1</th>
+                ...
+                <th>Field N</th>
+            </tr>
+            {% for item in query_results %}
+            <tr> 
+                <td>{{ item.field1 }}</td>
+                ...
+                <td>{{ item.fieldN }}</td>
+            </tr>
+            {% endfor %}
         </table>
     </div>
 </div>

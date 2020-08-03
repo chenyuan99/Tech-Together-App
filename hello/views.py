@@ -146,8 +146,5 @@ def add_guest(request):
 
     return render(request, "add-guest.html", {"user": username, "form": form})
 
-
-def logout(request):
-    auth.logout(request)  # 退出登录
-    response = HttpResponseRedirect('/index/')
-    return response
+def check_out(request):
+    return render(request, "check-out.html")

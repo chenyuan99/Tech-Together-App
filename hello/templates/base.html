@@ -54,24 +54,18 @@
     .center {
       margin: auto;
       text-align: center;
-      /* width: 60%; */
-      /* border: 3px solid #73AD21; */
-      /* padding: 10px; */
     }
 
     .footer {
       margin: auto;
       text-align: center;
-      /* width: 60%; */
-      /* border: 3px solid #73AD21; */
-      /* padding: 10px; */
     }
   </style>
 
 </head>
 
 <body>
-  <nav class="navbar navbar-default navbar-static-top navbar">
+  <nav class="navbar navbar-default navbar-static-top navbar-inverse">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -84,20 +78,18 @@
         </button>
         <a class="navbar-brand" href="https://www.maroonpower.com">MaroonPower</a>
       </div>
-
-
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
           <li class="active">
             <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
           </li>
-          <!-- <li>
-            <a href="/login"><span class="glyphicon glyphicon-education"></span> Hokies</a>
-          </li>
-          <li>
-            <a href="/login"><span class="glyphicon glyphicon-user"></span> Visitor</a>
-          </li> -->
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span
                 class="glyphicon glyphicon-th"></span> Buildings<span class="caret"></span></a>
@@ -110,10 +102,6 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <!-- <li class="navbar-right">
-            <a href="https://docs.google.com/document/d/1JbvnibAkpvCK4hd-yuiK8ZrbewosM3kgY9xSgP6CxmU/edit?usp=sharing"><span
-                class="glyphicon glyphicon-book"></span> How It Works</a>
-          </li> -->
           {% if user.is_authenticated %}
           <li><a href="/account">{{user.username|title}}</a></li>
           <li><a href="/logout">Logout</a></li>

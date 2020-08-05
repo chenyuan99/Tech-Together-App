@@ -85,6 +85,8 @@
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
           <li class="active">
             <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
           </li>
@@ -98,8 +100,6 @@
               <li><a href="/all-building">All Buildings</a></li>
             </ul>
           </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
           {% if user.is_authenticated %}
           <li><a href="/account">{{user.username|title}}</a></li>
           <li><a href="/logout">Logout</a></li>

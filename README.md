@@ -1,7 +1,7 @@
-# Visitor Tracking and Risk Analytics of Covid-19
+# Visitor Tracking and Risk Analytics of Covid-19 [Discontinued]
 
 ## Advisor
-- 
+- Alma Robinson
 
 ## Meet Team
 
@@ -14,4 +14,3 @@
 
 ## Sponsor
 - COVID-19 Rapid Response Seed Fund
-

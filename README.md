@@ -1,13 +1,13 @@
-# A Virginia Tech Tech Together Campaign Application
+# Visitor Tracking and Risk Analytics of Covid-19
 
 ## Advisor
 - 
 
 ## Meet Team
 
-- PI: 
+- PI: Yaokun Lai
 - Software Engineer: Yuan Chen
-- Hardware Engineer:
+- Hardware Engineer: Justin Ren
 - Accountant: 
 - Data Scientists: Xilai Zhu
 - Database Engineer: Runzhe Liu

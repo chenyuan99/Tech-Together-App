@@ -25,7 +25,7 @@ urlpatterns = [
     path("logout", hello.views.logout_request, name="logout"),
     path("login", hello.views.login_request, name="login"),
     path("all-building", hello.views.allbuilding, name="all-building"),
-    path("newman-library", hello.views.newmanlibrary, name="newman-library"),
+    path("jobs/", hello.views.newmanlibrary, name="jobs"),
     path("togresson-hall", hello.views.togressonhall, name="togresson-hall"),
     path("mcbryde-hall", hello.views.mcbrydehall, name="mcbryde-hall"),
     re_path(r'^favicon\.ico$', favicon_view),

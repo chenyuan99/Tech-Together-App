@@ -8,7 +8,6 @@
 - PI: Yaokun Lai
 - Software Engineer: Yuan Chen
 - Hardware Engineer: Justin Ren
-- Accountant: 
 - Data Scientists: Xilai Zhu
 - Database Engineer: Runzhe Liu
 
